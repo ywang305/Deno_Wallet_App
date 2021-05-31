@@ -10,13 +10,13 @@ const {
 @return privateKey or keystoreJson
 */
 router.post('/accounts', async (req, res, next) => {
-    const { number = 0, password } = req.query;
+    const { number = 0, password } = req.body;
 
     const accts = createAccts(Number(number), password);
     res.json(accts);
 });
 
-router.post('/accounts/decript/:password', async (req, res) => {
+router.post('/accounts/decrypt/:password', async (req, res) => {
     const keystoreJson = req.body;
     const { password } = req.params;
     const { address, privateKey } = decrypt(keystoreJson, password);

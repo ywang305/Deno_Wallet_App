@@ -1,0 +1,22 @@
+
+// test account
+
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@createdAt = {{$datetime iso8601}}
+@address = 0x53d284357ec70cE289D6D64134DfAc8E511c8a3D
+
+### check balance
+GET http://{{host}}/accounts/eth-balance/{{address}}
+
+### create account
+POST http://{{host}}/accounts
+Content-Type: {{contentType}}
+
+{
+    "number": 3,
+    "password": "pass"
+}
+
